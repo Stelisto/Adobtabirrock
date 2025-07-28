@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adopt a Bit-Rock</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    .rock {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #adoptBtn {
+      background: #ff9900;
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    #rockResult {
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🪨 Adopt a Bit-Rock 🪨</h1>
+  <p>Adopt a silly rock for 0.00001 BTC (Lightning)</p>
+  <div class="rock">
+    <button id="adoptBtn">Adopt a Rock</button>
+    <div id="rockResult" class="hidden">
+      <h2>Your Rock: <span id="rockName"></span></h2>
+      <p><strong>ID:</strong> <span id="rockID"></span></p>
+      <p><em id="rockFact"></em></p>
+      <p>Pay here: <span id="invoice"></span></p>
+    </div>
+  </div>  <script>
+    const rocks = [
+      "Stony McStoneface",
+      "Rocky Balboulder",
+      "Pebbleton",
+      "Granitron",
+      "Sir Slab-a-lot",
+      "The Rolling Stone",
+      "Dusty Pebbles",
+      "Rocky Horror",
+      "Captain Cobble",
+      "Baron Basalt"
+    ];
+
+    const facts = [
+      "This rock once dated a volcano.",
+      "It starred in a low-budget geology documentary.",
+      "It has never blinked once.",
+      "Survived three meteor impacts.",
+      "Banned from skipping contests for being too heavy.",
+      "Toured with a band as a drummer's pet.",
+      "Dislikes sand passionately.",
+      "Loves the sound of waterfalls.",
+      "Won a staring contest with a statue.",
+      "Secretly wants to be a diamond."
+    ];
+
+    document.getElementById('adoptBtn').addEventListener('click', () => {
+      const name = rocks[Math.floor(Math.random() * rocks.length)];
+      const fact = facts[Math.floor(Math.random() * facts.length)];
+      const id = Math.floor(100000 + Math.random() * 900000);
+
+      document.getElementById('rockName').textContent = name;
+      document.getElementById('rockID').textContent = id;
+      document.getElementById('rockFact').textContent = fact;
+
+      // Replace this with your actual Lightning address or invoice logic
+      const dummyInvoice = "lnbc1...YOUR-INVOICE...";
+      document.getElementById('invoice').textContent = dummyInvoice;
+
+      document.getElementById('rockResult').classList.remove('hidden');
+    });
+  </script></body>
+</html>
